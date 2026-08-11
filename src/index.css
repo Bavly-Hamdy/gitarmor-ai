@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: var(--bg-primary);
+  --color-brand-surface: var(--bg-surface);
+  --color-brand-emerald: #10B981;
+  --color-brand-cyan: #06B6D4;
+  --color-brand-indigo: #6366F1;
+  
+  --color-sev-critical: var(--color-sev-critical, #EF4444);
+  --color-sev-high: var(--color-sev-high, #F97316);
+  --color-sev-medium: var(--color-sev-medium, #F59E0B);
+  --color-sev-low: var(--color-sev-low, #3B82F6);
+
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  --bg-primary: #0B0F17;
+  --bg-surface: rgba(17, 24, 39, 0.7);
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  
+  --color-sev-critical: #EF4444;
+  --color-sev-high: #F97316;
+  --color-sev-medium: #F59E0B;
+  --color-sev-low: #3B82F6;
+}
+
+:root.light-theme {
+  --bg-primary: #F9FAFB;
+  --bg-surface: rgba(255, 255, 255, 0.7);
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  
+  /* Overriding standard Tailwind colors used in the app for light mode */
+  --color-gray-900: #ffffff;
+  --color-gray-800: #f3f4f6;
+  --color-gray-700: #e5e7eb;
+  --color-gray-500: #6b7280;
+  --color-gray-400: #4b5563;
+  --color-gray-300: #374151;
+  --color-gray-200: #1f2937;
+  --color-gray-100: #111827;
+  --color-gray-50: #000000;
+  
+  --color-white: #111827;
+  --color-black: #ffffff;
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans antialiased selection:bg-brand-cyan/30 min-h-screen overflow-x-hidden;
+  }
+}
+
+.glass-panel {
+  @apply bg-[var(--bg-surface)] backdrop-blur-xl border border-gray-700/50 rounded-xl shadow-2xl;
+}
+
+.glass-panel-hover {
+  @apply hover:bg-gray-800/60 hover:border-gray-700/80 transition-all duration-300;
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px -5px rgba(6, 182, 212, 0.4);
+}
+
+.glow-rose {
+  box-shadow: 0 0 20px -5px var(--color-sev-critical);
+}
+
+/* React Flow Dark/Light Theme Overrides */
+.react-flow__controls {
+  @apply !bg-[var(--bg-surface)] !border !border-gray-700 !rounded-lg overflow-hidden !shadow-lg;
+}
+
+.react-flow__controls-button {
+  @apply !bg-transparent !border-b !border-gray-700 !text-[var(--text-primary)] hover:!bg-gray-800/50 flex items-center justify-center;
+}
+
+.react-flow__controls-button:last-child {
+  @apply !border-b-0;
+}
+
+.react-flow__controls-button svg {
+  @apply fill-current !text-[var(--text-primary)];
+}
